@@ -11,7 +11,8 @@
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-end">
 
             <div class="text-end">
-                <button type="button" class="btn btn-outline-danger me-2">Log Out</button>
+                <button type="button" class="btn btn-success me-2">Add New</button>
+                <button type="button" class="btn btn-outline-danger me-2" id="logoutbtn">Log Out</button>
             </div>
 
         </div>
@@ -85,4 +86,34 @@
     </div>
   </div>
 </div>
+@endsection
+
+
+@section('home_js')
+<script>
+  $(document).ready(function(){
+
+    // Logout functionality using the fetch method
+    document.querySelector("#logoutbtn").addEventListener('click' , function(){
+
+      // Getting the token store at the time of login for logouting the user
+      const token =localStorage.getItem('api_token');
+      console.log(token);
+      
+
+      fetch('/api/logout' ,{
+        method : 'POST',
+        headers : {
+          'Authorization' : `Bearer ${token}`
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        window.location.href = "/";
+      });
+      
+    })
+  });
+</script>
 @endsection

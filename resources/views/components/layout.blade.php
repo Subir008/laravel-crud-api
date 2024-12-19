@@ -22,6 +22,7 @@
 
 <body class="text-center">
 
+    <!-- Main section is for login & signup -->
     @section('main')
     @show
     @section('test')
@@ -38,7 +39,10 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+    <!-- Adding js code -->
     @section('signin_js')
+    @show
+    @section('home_js')
     @show
 
 </body>
