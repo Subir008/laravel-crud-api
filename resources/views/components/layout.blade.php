@@ -20,7 +20,7 @@
     <link href="/css/signin.css" rel="stylesheet">
 </head>
 
-<body class="text-center">
+<body >
 
     <!-- Main section is for login & signup -->
     @section('main')
