@@ -8,6 +8,6 @@ Route::get('/', function () {
 
 Route::view('signup' , 'signup')->name('signup');
 
-Route::get('home' , function (){
-    return view('home');
-});
+Route::view('home' , 'home')->name('home');
+
+Route::view('new-post' , 'new-post')->name('new-post');
