@@ -42,7 +42,7 @@
     <!-- Adding js code -->
     @section('signin_js')
     @show
-    @section('home_js')
+    @section('js')
     @show
 
 </body>
