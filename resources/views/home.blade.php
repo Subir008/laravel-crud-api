@@ -48,12 +48,29 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        <form action="" id="updateform">
+          <input type="hidden" name="" id="id">
+          <div class='col-md-12'>
+            <label for='name' class='form-label'>Title</label>
+            <input type='text' class='form-control' id='name' value=''>
+          </div>
+          <div class='col-md-12 my-2'>
+            <label for='description' class='form-label'>Description</label>
+            <textarea class='form-control' id='description'></textarea>
+          </div>
+          <div class='col-md-12 my-4 d-flex justify-content-center'>
+            <img src='' height='150px' id="image">
+          </div>
+          <div class="input-group mb-3">
+            <input type="file" class="form-control" id="image_upload">
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

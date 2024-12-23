@@ -20,8 +20,8 @@
             <textarea type="password" class="form-control" id="description"></textarea>
         </div>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="inputGroupFile02">
-            <label class="input-group-text" for="inputGroupFile02" id="image">Upload</label>
+            <input type="file" class="form-control" id="image">
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
         </div>
         <div class="col-12 text-center">
             <button type="submit" class="btn btn-lg btn-success col-4 " id="savepost">Save</button>
