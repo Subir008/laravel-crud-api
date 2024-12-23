@@ -40,7 +40,7 @@ class CrudController extends Controller
         return response()->json([
                 'status'=> false,
                 'message' => 'Validation error',
-                'error' => $validator->errors()
+                'error' => $validator->errors()->all()
             ],401);
         }
 

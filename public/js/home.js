@@ -135,7 +135,7 @@ $(document).ready(function () {
               <label for='description' class='form-label'>Description</label>
               <textarea class='form-control' id='description'>${post.description}</textarea>
               </div>
-              <div class='col-md-12 my-4'>
+              <div class='col-md-12 my-4 d-flex justify-content-center'>
                   <img src='upload/${post.image}' height='150px' >
               </div>
               
@@ -145,9 +145,41 @@ $(document).ready(function () {
         });
     }
 
-    // Delete data
+
+    // Update Post Modal Open and load data
+    var updateModal = document.querySelector("#updateModal");
+
+    if (updateModal) {
+        updateModal.addEventListener("show.bs.modal", function (event) {
+            // Button that triggered the modal
+            var button = event.relatedTarget;
+            // Extract info from data-bs-* attributes
+            var id = button.getAttribute("data-bs-postid");
+
+            const token = localStorage.getItem("api_token");
+
+            fetch(`/api/post/${id}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    const post = data.post;
+
+                    document.querySelector('#id').value= post.id;
+                    document.querySelector('#name').value = post.name;
+                    document.querySelector('#description').value = post.description;
+                    document.querySelector('#image').src = `/upload/${post.image}`;
+             
+                });
+        });
+    }
+
 });
 
+// Delete data
 function delete_data(id) {
     const token = localStorage.getItem("api_token");
 
