@@ -145,7 +145,6 @@ $(document).ready(function () {
         });
     }
 
-
     // Update Post Modal Open and load data
     var updateModal = document.querySelector("#updateModal");
 
@@ -168,15 +167,55 @@ $(document).ready(function () {
                 .then((data) => {
                     const post = data.post;
 
-                    document.querySelector('#id').value= post.id;
-                    document.querySelector('#name').value = post.name;
-                    document.querySelector('#description').value = post.description;
-                    document.querySelector('#image').src = `/upload/${post.image}`;
-             
+                    document.querySelector("#id").value = post.id;
+                    document.querySelector("#name").value = post.name;
+                    document.querySelector("#description").value =
+                        post.description;
+                    document.querySelector(
+                        "#image"
+                    ).src = `/upload/${post.image}`;
                 });
         });
     }
 
+    // Updating post
+    var updateform = document.querySelector("#updateform");
+
+    updateform.onsubmit = (e) => {
+        e.preventDefault();
+
+        const token = localStorage.getItem("api_token");
+
+        let id = document.querySelector("#id").value;
+        let name = document.querySelector("#name").value;
+        let description = document.querySelector("#description").value;
+
+        var formdata = new FormData();
+        
+        formdata.append("id", id);
+        formdata.append("name", name);
+        formdata.append("description", description);
+        formdata.append("image", image);
+
+        if(! document.querySelector("#image_upload").files[0] == ""){
+            let image = document.querySelector("#image_upload").files[0];
+            formdata.append("image", image);
+        }
+
+
+        let response = fetch(`/api/post/${id}`, {
+            method: "POST",
+            body: formdata,
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                window.location.href = "/home";
+            });
+    };
 });
 
 // Delete data
