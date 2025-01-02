@@ -47,16 +47,16 @@
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <form action="" id="updateform">
-          <input type="hidden" name="" id="id">
+      <form action="" id="updateform">
+        <div class="modal-body">
+          <input type="hidden" name="" id="update_id" value="">
           <div class='col-md-12'>
             <label for='name' class='form-label'>Title</label>
-            <input type='text' class='form-control' id='name' value=''>
+            <input type='text' class='form-control' id='update_name' value=''>
           </div>
           <div class='col-md-12 my-2'>
             <label for='description' class='form-label'>Description</label>
-            <textarea class='form-control' id='description'></textarea>
+            <textarea class='form-control' id='update_description'></textarea>
           </div>
           <div class='col-md-12 my-4 d-flex justify-content-center'>
             <img src='' height='150px' id="image">

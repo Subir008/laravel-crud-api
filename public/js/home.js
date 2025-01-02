@@ -10,7 +10,7 @@ $(document).ready(function () {
     document.querySelector("#logoutbtn").addEventListener("click", function () {
         // Getting the token store at the time of login for logouting the user
         const token = localStorage.getItem("api_token");
-        console.log(token);
+        // console.log(token);
 
         // Using Fetch Method
         // fetch('/api/logout' ,{
@@ -155,6 +155,11 @@ $(document).ready(function () {
             // Extract info from data-bs-* attributes
             var id = button.getAttribute("data-bs-postid");
 
+            document.querySelector("#update_id").value = "";
+            document.querySelector("#update_name").value = "";
+            document.querySelector("#update_description").value = "";
+            document.querySelector("#image").src = "";
+                    
             const token = localStorage.getItem("api_token");
 
             fetch(`/api/post/${id}`, {
@@ -166,14 +171,12 @@ $(document).ready(function () {
                 .then((response) => response.json())
                 .then((data) => {
                     const post = data.post;
-
-                    document.querySelector("#id").value = post.id;
-                    document.querySelector("#name").value = post.name;
-                    document.querySelector("#description").value =
-                        post.description;
-                    document.querySelector(
-                        "#image"
-                    ).src = `/upload/${post.image}`;
+                    // console.log(post);
+                    
+                    document.querySelector("#update_id").value = post.id;
+                    document.querySelector("#update_name").value = post.name;
+                    document.querySelector("#update_description").value = post.description;
+                    document.querySelector("#image").src = `/upload/${post.image}`;
                 });
         });
     }
@@ -181,39 +184,40 @@ $(document).ready(function () {
     // Updating post
     var updateform = document.querySelector("#updateform");
 
-    updateform.onsubmit = (e) => {
-        e.preventDefault();
+    updateform.onsubmit = async (e) => {
+        // e.preventDefault();
 
         const token = localStorage.getItem("api_token");
 
-        let id = document.querySelector("#id").value;
-        let name = document.querySelector("#name").value;
-        let description = document.querySelector("#description").value;
+        const id = document.querySelector("#update_id").value;
+        const name = document.querySelector("#update_name").value;
+        const description = document.querySelector("#update_description").value;
+
+        console.log(name, description);
 
         var formdata = new FormData();
-        
+
         formdata.append("id", id);
         formdata.append("name", name);
         formdata.append("description", description);
-        formdata.append("image", image);
 
-        if(! document.querySelector("#image_upload").files[0] == ""){
-            let image = document.querySelector("#image_upload").files[0];
+        if (!document.querySelector("#image_upload").files[0] == "") {
+            const image = document.querySelector("#image_upload").files[0];
             formdata.append("image", image);
         }
 
-
-        let response = fetch(`/api/post/${id}`, {
+        let response = await fetch(`/api/post/${id}`, {
             method: "POST",
             body: formdata,
             headers: {
                 Authorization: `Bearer ${token}`,
+                "X-HTTP-Method-Override": "PUT",
             },
         })
-            .then((response) => response.json())
+            .then(response => response.json())
             .then((data) => {
                 console.log(data);
-                window.location.href = "/home";
+                // window.location.href = "/home";
             });
     };
 });

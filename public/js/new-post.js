@@ -24,7 +24,10 @@ addform.onsubmit =  (e) => {
     })
         .then(response => response.json())
         .then((data) => {
-            console.log(data);
+            // console.log(data);
+            if(data.status == false){
+                alert(data.error);
+            }
             window.location.href = '/home' ;
         });
 };
