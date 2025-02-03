@@ -44,6 +44,8 @@
     @show
     @section('js')
     @show
+    @section('signup-js')
+    @show
 
 </body>
 

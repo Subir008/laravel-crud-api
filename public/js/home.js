@@ -37,7 +37,7 @@ $(document).ready(function () {
             },
             success: function (data) {
                 console.log(data);
-                // window.location.href = "/";
+                window.location.href = "/";
                 localStorage.removeItem("api_token");
             },
         });

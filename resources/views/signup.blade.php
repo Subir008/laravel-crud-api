@@ -6,6 +6,7 @@
 
 <!-- Main section -->
 @section('main')
+<div id="alert-container" class="container-fluid col-12" style="position:absolute; top: 15px;"></div>
 <main class="form-signin pt-5">
     <form>
 
@@ -24,8 +25,13 @@
             <label for="password">Password</label>
         </div>
 
-        <a class="w-100 mt-2 btn btn-lg btn-warning" type="submit" href="{{route('signup')}}">Submit</a>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+        <a class="w-100 mt-2 btn btn-lg btn-warning" type="submit" id="signupbtn" href="{{route('signup')}}">Submit</a>
+        <a class="w-100 mt-2 btn btn-lg btn-primary" type="submit" href="{{route('signin')}}">Back</a>
+        <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
     </form>
 </main>
+@endsection
+
+@section('signup-js')
+    <script src="js/signup.js"></script>
 @endsection
