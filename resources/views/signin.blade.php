@@ -6,6 +6,7 @@
 
 <!-- Main section -->
 @section('main')
+<div id="alert-container" class="container-fluid col-12" style="position:relative; top: 15px;"></div>
 <main class="form-signin pt-5 text-center">
   <form>
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
@@ -20,46 +21,11 @@
     <button class="w-100 btn btn-lg btn-primary" type="submit" id="signinbtn">Sign in</button>
     OR
     <a class="w-100 mt-2 btn btn-lg btn-success" type="submit" href="{{route('signup')}}">Sign up</a>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
   </form>
 </main>
 @endsection
 
 @section('signin_js')
-  <script>
-    $(document).ready(function () {
-      $('#signinbtn').on("click" , function(e){
-        e.preventDefault();
-
-        // Gettig the data from the form done using 2 ways
-        let email =$('#email').val();
-        let password =$('#password').val();
-        // let email =document.getElementById('email').value;
-        
-        $.ajax({
-          url : '/api/login',
-          type : 'POST',
-          contentType : 'application/json',
-          data :JSON.stringify({
-            email :email,
-            password : password
-          }),
-          success :function(response){
-            console.log(response);
-            
-            localStorage.setItem('api_token' , response.token);
-            window.location.href = '/home';
-
-          },
-          error :function(xhr,status,error){
-            console.log(status);
-            alert("Error : " +xhr.responseJSON['message']);
-          }
-
-        });
-        
-      });
-    });
-    
-  </script>
+  <script src="js/signin.js"></script>
 @endsection
