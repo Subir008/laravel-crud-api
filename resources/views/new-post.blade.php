@@ -9,7 +9,7 @@
     <h2 class="bg-info text-white px-4 py-2">New Post</h2>
 </div>
 
-<div class="container-fluid px-5 py-4 mx-2">
+<div class="container-fluid px-5 py-4">
     <form class="row g-3 mx-4" id="addform">
         <div class="col-md-12">
             <label for="name" class="form-label">Title</label>
@@ -17,7 +17,7 @@
         </div>
         <div class="col-md-12">
             <label for="description" class="form-label">Description</label>
-            <textarea type="password" class="form-control" id="description"></textarea>
+            <textarea type="password" class="form-control" id="description" ></textarea>
         </div>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="image">

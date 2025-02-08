@@ -52,7 +52,8 @@ class AuthController extends Controller
             return response()->json([
                 'status'=> false,
                 'message' => 'Validation error',
-                'error' => $validator->errors()->all()
+                // 'error' => $validator->errors()->all()
+                'error' => $validator->errors()
             ],404);
         }
 

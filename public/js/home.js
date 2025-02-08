@@ -1,6 +1,6 @@
 $(document).ready(function () {
     const token = localStorage.getItem("api_token");
-    console.log(token);
+    // console.log(token);
 
     if (!token) {
         window.location.href = "/";
@@ -36,7 +36,7 @@ $(document).ready(function () {
                 Authorization: `Bearer ${token}`,
             },
             success: function (data) {
-                console.log(data);
+                // console.log(data);
                 window.location.href = "/";
                 localStorage.removeItem("api_token");
             },
@@ -75,8 +75,8 @@ $(document).ready(function () {
                       </thead>
                       <tbody> `;
 
+                let postid = 1;
                 postData.forEach((post) => {
-                    let postid = 1;
                     tableData += `
                     <tr>
                     <th scope="row">${postid}</th>
@@ -88,7 +88,7 @@ $(document).ready(function () {
                     <td><button type="button" onclick="delete_data(${post.id})" class="btn btn-danger">Delete</button></td>
                   </tr>
                   `;
-                    postid + 1;
+                    postid ++;
                 });
 
                 tableData += `</tbody>
@@ -216,8 +216,8 @@ $(document).ready(function () {
         })
             .then(response => response.json())
             .then((data) => {
-                console.log(data);
-                // window.location.href = "/home";
+                // console.log(data);
+                window.location.href = "/home";
             });
     };
 });
@@ -226,7 +226,7 @@ $(document).ready(function () {
 function delete_data(id) {
     const token = localStorage.getItem("api_token");
 
-    console.log(id);
+    // console.log(id);
 
     $.ajax({
         url: `/api/post/${id}`,
